@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "backslot",
+	"version": "${version}",
+	"name": "BackSlot",
+	"description": "Adds a one-item back slot beside the hotbar. Whatever you put in it is shown on your back.",
+	"authors": [
+		"dailywool"
+	],
+	"license": "MIT",
+	"environment": "*",
+	"mixins": [
+		"backslot.mixins.json",
+		{
+			"config": "backslot.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.2",
+		"java": ">=25"
+	}
+}

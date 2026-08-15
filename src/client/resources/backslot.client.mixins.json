@@ -1,0 +1,18 @@
+{
+	"required": true,
+	"package": "com.backslot.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"AvatarRenderStateMixin",
+		"AvatarRendererMixin",
+		"ClientLanguageMixin",
+		"CreativeModeInventoryScreenMixin",
+		"HudMixin",
+		"InventoryScreenMixin",
+		"MinecraftMixin",
+		"OptionsMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
