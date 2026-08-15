@@ -37,20 +37,20 @@ Not even Fabric API. Drop the jar into `/mods` alongside Fabric Loader.
 
 ## Building
 
-Needs JDK 25 and Gradle. Loom fetches Minecraft itself, so there's nothing else to set up.
+Needs JDK 25. Loom fetches Minecraft itself, so there's nothing else to set up.
 
 ```bash
-gradle build
+./gradlew build
 ```
 
 The jar lands in `build/libs/`. Two other tasks worth knowing:
 
 ```bash
-gradle runClient
+./gradlew runClient
 ```
 
 ```bash
-gradle genSources
+./gradlew genSources
 ```
 
 `runClient` launches the game against your working copy; `genSources` decompiles Minecraft
