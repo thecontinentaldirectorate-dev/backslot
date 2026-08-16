@@ -1,6 +1,7 @@
 package com.backslot.client.mixin;
 
 import com.backslot.BackSlotHolder;
+import com.backslot.BackSlotSync;
 import net.minecraft.client.AttackIndicatorStatus;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -41,6 +42,10 @@ public abstract class HudMixin {
 
 	@Inject(method = "extractItemHotbar", at = @At("TAIL"))
 	private void backslot$drawBackSlot(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
+		if (!BackSlotSync.serverHasMod()) {
+			return;
+		}
+
 		Player player = getCameraPlayer();
 		if (player == null) {
 			return;

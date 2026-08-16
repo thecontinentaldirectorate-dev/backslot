@@ -6,6 +6,7 @@
 		"AvatarRenderStateMixin",
 		"AvatarRendererMixin",
 		"ClientLanguageMixin",
+		"ClientPacketListenerMixin",
 		"CreativeModeInventoryScreenMixin",
 		"HudMixin",
 		"InventoryScreenMixin",

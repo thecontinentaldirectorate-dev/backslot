@@ -1,6 +1,7 @@
 package com.backslot.client.mixin;
 
 import com.backslot.BackSlot;
+import com.backslot.BackSlotSync;
 import com.backslot.client.BackSlotKeys;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.MultiPlayerGameMode;
@@ -28,6 +29,12 @@ public abstract class MinecraftMixin {
 	private void backslot$handleSwapKey(CallbackInfo ci) {
 		while (BackSlotKeys.swapBackItem.consumeClick()) {
 			if (player == null || gameMode == null || player.isSpectator()) {
+				continue;
+			}
+
+			// Slot 46 isn't there on a server without the mod, and the click would be
+			// rejected server-side and leave the client out of sync.
+			if (!BackSlotSync.serverHasMod()) {
 				continue;
 			}
 

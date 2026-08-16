@@ -1,6 +1,7 @@
 package com.backslot.client.mixin;
 
 import com.backslot.BackSlot;
+import com.backslot.BackSlotSync;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
@@ -57,7 +58,7 @@ public abstract class CreativeModeInventoryScreenMixin
 	@Inject(method = "extractBackground", at = @At("TAIL"))
 	private void backslot$drawSlotFrame(GuiGraphicsExtractor graphics, int mouseX, int mouseY,
 			float partialTick, CallbackInfo ci) {
-		if (selectedTab.getType() == CreativeModeTab.Type.INVENTORY) {
+		if (BackSlotSync.serverHasMod() && selectedTab.getType() == CreativeModeTab.Type.INVENTORY) {
 			graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_SPRITE,
 					leftPos + SLOT_X - 1, topPos + SLOT_Y - 1, 18, 18);
 		}

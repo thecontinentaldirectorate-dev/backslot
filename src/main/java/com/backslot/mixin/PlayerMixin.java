@@ -2,6 +2,7 @@ package com.backslot.mixin;
 
 import com.backslot.BackContainer;
 import com.backslot.BackSlotHolder;
+import com.backslot.BackSlotSync;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -37,6 +38,9 @@ public abstract class PlayerMixin implements BackSlotHolder {
 	@Inject(method = "defineSynchedData", at = @At("TAIL"))
 	private void backslot$defineSynchedData(SynchedEntityData.Builder builder, CallbackInfo ci) {
 		builder.define(BACK_ITEM, ItemStack.EMPTY);
+		// The id is only known once defineId has run, and the client needs it to spot the
+		// server's join announcement. This fires well before any entity data arrives.
+		BackSlotSync.rememberDataId(BACK_ITEM.id());
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.backslot.client.mixin;
 
 import com.backslot.BackSlot;
+import com.backslot.BackSlotSync;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
@@ -27,6 +28,10 @@ public abstract class InventoryScreenMixin extends AbstractContainerScreen<Inven
 	@Inject(method = "extractBackground", at = @At("TAIL"))
 	private void backslot$drawSlotFrame(GuiGraphicsExtractor graphics, int mouseX, int mouseY,
 			float partialTick, CallbackInfo ci) {
+		if (!BackSlotSync.serverHasMod()) {
+			return;
+		}
+
 		graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_SPRITE,
 				leftPos + BackSlot.SLOT_X - 1, topPos + BackSlot.SLOT_Y - 1, 18, 18);
 	}

@@ -8,6 +8,7 @@
 		"dailywool"
 	],
 	"license": "MIT",
+	"icon": "assets/backslot/icon.png",
 	"environment": "*",
 	"mixins": [
 		"backslot.mixins.json",
